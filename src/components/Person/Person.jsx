@@ -1,11 +1,13 @@
-export function Person({ person }) {
+export function Person({ person: { name, age, sex, isMarried, partnerName } }) {
+  const partnerSexCaption = sex === 'm' ? 'wife' : 'husband';
+
   return (
     <section className="Person">
-      <h2 className="Person__name">My name is {person.name}</h2>
-      {person.age ? <p className="Person__age">I am {person.age}</p> : ''}
+      <h2 className="Person__name">My name is {name}</h2>
+      {age && <p className="Person__age">I am {age}</p>}
       <p className="Person__partner">
-        {person.isMarried
-          ? `${person.partnerName} is my ${person.sex === 'm' ? 'wife' : 'husband'}`
+        {isMarried
+          ? `${partnerName} is my ${partnerSexCaption}`
           : 'I am not married'}
       </p>
     </section>
